@@ -119,10 +119,19 @@
 ;; avoid "Symbolic link to SVN-controlled source file; follow link? (yes or no)"
 (setq vc-follow-symlinks t)
 
+;; auto-complete-latex
+(require 'auto-complete-latex)
+(setq ac-l-dict-directory "~/.emacs.d/elisp/auto-complete-latex/ac-l-dict/")
+  (add-to-list 'ac-modes 'latex-mode)
+  (add-hook 'latex-mode-hook 'ac-l-setup)
+
 ;; 起動画面で recentf を開く
 (add-hook 'after-init-hook (lambda()
     (recentf-open-files)
     ))
+
+;; C-x C-a でanything-for-files
+(define-key global-map (kbd "C-x C-a") 'anything-for-files)
 
 ;; C-Ret で矩形選択
 ;; 詳しいキーバインド操作：http://dev.ariel-networks.com/articles/emacs/part5/
@@ -156,6 +165,10 @@
 
 ;;git gutter+
 (global-git-gutter+-mode t)
+
+;; undo tree
+(require 'undo-tree)
+(global-undo-tree-mode t)
 ;; ------------------------------------------------------------------------
 ;; @ initial frame maximize
 
