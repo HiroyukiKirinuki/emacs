@@ -24,12 +24,11 @@
 
 ;;font
 (add-to-list 'default-frame-alist '(font . "ricty-15"))
-
+;; (add-to-list 'default-frame-alist '(left-fringe . 10))
+                 
 (set-scroll-bar-mode nil)            ; スクロールバー非表示
 (setq line-spacing 0.2)              ; 行間
 
-;; 行番号表示
-(global-linum-mode t)
 
 ;; タブをスペースで扱う
 (setq-default indent-tabs-mode nil)
@@ -46,6 +45,11 @@
 
 ;;;スタートアップを消す
 (setq inhibit-startup-screen -1)
+
+
+;; C-kで行全体を削除
+(setq kill-whole-line t)
+(define-key global-map "\C-k" 'kill-whole-line)
 
 ;;; メニューバーを消す
 (menu-bar-mode -1)
@@ -102,7 +106,6 @@
    ;; 自動で長過ぎる行を分割する
    (auto-fill-mode 1)))
 
-
 ;; 最近開いたファイルを表示
 (require 'recentf-ext)
 
@@ -122,13 +125,13 @@
 ;; auto-complete-latex
 (require 'auto-complete-latex)
 (setq ac-l-dict-directory "~/.emacs.d/elisp/auto-complete-latex/ac-l-dict/")
-  (add-to-list 'ac-modes 'latex-mode)
-  (add-hook 'latex-mode-hook 'ac-l-setup)
+(add-to-list 'ac-modes 'latex-mode)
+(add-hook 'latex-mode-hook 'ac-l-setup)
 
 ;; 起動画面で recentf を開く
 (add-hook 'after-init-hook (lambda()
-    (recentf-open-files)
-    ))
+                             (recentf-open-files)
+                             ))
 
 ;; C-x C-a でanything-for-files
 (define-key global-map (kbd "C-x C-a") 'anything-for-files)
@@ -145,7 +148,7 @@
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 
 ;; redoできるようにする
-;; http://www.emacswiki.org/emacs/redo+.el
+;; Http://www.emacswiki.org/emacs/redo+.el
 (when (require 'redo+ nil t)
   (define-key global-map (kbd "C-_") 'redo))
 
@@ -162,6 +165,9 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
+
+;; 行番号表示
+;;(global-linum-mode t)
 
 ;;git gutter+
 (global-git-gutter+-mode t)
@@ -203,56 +209,28 @@
 ;; http://d.hatena.ne.jp/rubikitch/20100718/anything
 (require 'anything-startup nil t)
 
-;; ------------------------------------------------------------------------
-;; ;; @ tabbar.el
+;; anzu検索時にマッチした数と位置を教える
+(global-anzu-mode +1)
 
-;; ;; タブ化
-;; ;; http://www.emacswiki.org/emacs/tabbar.el
-;; ;;(require 'cl)
-;; (require 'tabbar nil t)
+;;smooth scroll
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
 
-;; ;; scratch buffer以外をまとめてタブに表示する
-;; (setq tabbar-buffer-groups-function
-;;       (lambda (b) (list "All Buffers")))
-;; (setq tabbar-buffer-list-function
-;;       (lambda ()
-;;         (remove-if
-;;          (lambda(buffer)
-;;            (unless (string-match (buffer-name buffer)
-;;                                  "\\(*scratch*\\|*Apropos*\\|*shell*\\|*eshell*\\|*Customize*\\)")
-;;              (find (aref (buffer-name buffer) 0) " *"))
-;;            )
-;;          (buffer-list))))
+(global-set-key "\C-a" 'beggining-of-indented-line)
+(defun beggining-of-indented-line (current-point)
+  "インデント文字を飛ばした行頭に戻る。
+ただし、ポイントから行頭までの間にインデント文字しかない場合は、行頭に戻る。"
+  (interactive "d")
+  (if (string-match
+       "^[ \t]+$"
+       (save-excursion
+         (buffer-substring-no-properties
+          (progn (beginning-of-line) (point))
+          current-point)))
+      (beginning-of-line)
+    (back-to-indentation)))
 
-;; ;; tabbarを有効にする
-;; (tabbar-mode 1)
-
-;; ;; ボタンをシンプルにする
-;; (setq tabbar-home-button-enabled "")
-;; (setq tabbar-scroll-right-button-enabled "")
-;; (setq tabbar-scroll-left-button-enabled "")
-;; (setq tabbar-scroll-right-button-disabled "")
-;; (setq tabbar-scroll-left-button-disabled "")
-
-;; ;; Ctrl-Tab, Ctrl-Shift-Tab でタブを切り替える
-;; (dolist (func '(tabbar-mode tabbar-forward-tab tabbar-forward-group tabbar-backward-tab tabbar-backward-group))
-;;   (autoload func "tabbar" "Tabs at the top of buffers and easy control-tab navigation"))
-;; (defmacro defun-prefix-alt (name on-no-prefix on-prefix &optional do-always)
-;;   `(defun ,name (arg)
-;;      (interactive "P")
-;;      ,do-always
-;;      (if (equal nil arg)
-;;          ,on-no-prefix
-;;        ,on-prefix)))
-;; (defun-prefix-alt shk-tabbar-next (tabbar-forward-tab) (tabbar-forward-group) (tabbar-mode 1))
-;; (defun-prefix-alt shk-tabbar-prev (tabbar-backward-tab) (tabbar-backward-group) (tabbar-mode 1))
-;; (global-set-key [(control tab)] 'shk-tabbar-next)
-;; (global-set-key [(control shift tab)] 'shk-tabbar-prev)
-
-;; ;; GUIで直接ファイルを開いた場合フレームを作成しない
-;; (add-hook 'before-make-frame-hook
-;;           (lambda ()
-;;             (when (eq tabbar-mode t)
-;;               (switch-to-buffer (buffer-name))
-;;               (delete-this-frame))))
-;; ;;---------------------------------------------------------
+;;anything のコマンド履歴を残す
+(setq desktop-globals-to-save '(extended-command-history))
+(setq desktop-files-not-to-save "")
+(desktop-save-mode 1)

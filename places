@@ -1,6 +1,9 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/kirinuki/.emacs.d/init.el" . 1312)
- ("/Users/kirinuki/.emacs.d/recentf" . 1231)
+(("/Users/kirinuki/.emacs.d/init.el" . 5927)
+ ("/Users/kirinuki/.emacs.d/recentf" . 1490)
+ ("/Users/kirinuki/.emacs.d/elpa/smooth-scroll-20130321.2114/smooth-scroll-autoloads.el" . 243)
+ ("/Users/kirinuki/.emacs.d/elpa/powerline-20140516.2128/powerline-autoloads.el" . 4197)
+ ("/Users/kirinuki/.emacs.d/elpa/anzu-20141005.1955/anzu-autoloads.el" . 1428)
  ("/Users/kirinuki/.emacs.d/elpa/undo-tree-20140509.522/undo-tree-autoloads.el" . 1632)
  ("/Users/kirinuki/Dropbox/楠本研/会議/SANER2015/saner2015.tex" . 938)
  ("/Users/kirinuki/.emacs.d/.git/"
