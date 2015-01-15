@@ -91,6 +91,12 @@
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
+;; C-hでバックスペース
+(global-set-key "\C-h" 'delete-backward-char)
+
+;;M-y でキルリング一覧
+(global-set-key "\M-y" 'anything-show-kill-ring)
+
 ;;; ファイル名が重複していたらディレクトリ名を追加する。
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
@@ -136,6 +142,11 @@
 ;; C-x C-a でanything-for-files
 (define-key global-map (kbd "C-x C-a") 'anything-for-files)
 
+;; spell chack
+(setq-default ispell-program-name "/usr/local/bin/aspell")
+(eval-after-load "ispell"
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+
 ;; C-Ret で矩形選択
 ;; 詳しいキーバインド操作：http://dev.ariel-networks.com/articles/emacs/part5/
 (cua-mode t)
@@ -146,12 +157,6 @@
 (global-set-key (kbd "C-x <down>")  'windmove-down)
 (global-set-key (kbd "C-x <up>")    'windmove-up)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
-
-;; redoできるようにする
-;; Http://www.emacswiki.org/emacs/redo+.el
-(when (require 'redo+ nil t)
-  (define-key global-map (kbd "C-_") 'redo))
-
 
 ;;auto-install
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/auto-install/"))
@@ -175,6 +180,40 @@
 ;; undo tree
 (require 'undo-tree)
 (global-undo-tree-mode t)
+
+;; IMEの設定
+(setq default-input-method "MacOSX")
+
+(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `title "あ")
+
+;; カーソルの色
+(mac-set-input-method-parameter "com.google.inputmethod.Japanese.base" `cursor-color "dark orange")
+(mac-set-input-method-parameter "com.google.inputmethod.Japanese.Roman" `cursor-color "sky blue")
+;;--------------------------------------------------------------
+;;            google 翻訳
+;;--------------------------------------------------------------
+;; popwin 翻訳用
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+(setq popwin:popup-window-position 'bottom)
+
+(require 'google-translate)
+
+(global-set-key "\C-xt" 'google-translate-at-point)
+(global-set-key "\C-xT" 'google-translate-query-translate)
+
+;; 翻訳のデフォルト値を設定(ja -> en)（無効化は C-u する）
+(custom-set-variables
+ '(google-translate-default-source-language "ja")
+ '(google-translate-default-target-language "en"))
+
+;; google-translate.elの翻訳バッファをポップアップで表示させる
+(push '("*Google Translate*") popwin:special-display-config)
+
+
+;;--------------------------------------------------------------
+
+
 ;; ------------------------------------------------------------------------
 ;; @ initial frame maximize
 
@@ -234,3 +273,20 @@
 (setq desktop-globals-to-save '(extended-command-history))
 (setq desktop-files-not-to-save "")
 (desktop-save-mode 1)
+
+(defun my-anything-toggle-resplit-window ()
+  (interactive)
+  (when (anything-window)
+    (save-selected-window
+      (select-window (anything-window))
+      (let ((before-height (window-height)))
+        (delete-other-windows)
+        (switch-to-buffer anything-current-buffer)
+        (if (= (window-height) before-height)
+            (split-window-vertically)
+          (split-window-horizontally)))
+      (select-window (next-window))
+      (switch-to-buffer anything-buffer))))
+
+(define-key anything-map "\C-o" 'my-anything-toggle-resplit-window)
+(setq anything-samewindow t)
