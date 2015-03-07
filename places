@@ -1,26 +1,44 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/kirinuki/.emacs.d/init.el" . 5927)
- ("/Users/kirinuki/.emacs.d/recentf" . 1490)
- ("/Users/kirinuki/.emacs.d/elpa/smooth-scroll-20130321.2114/smooth-scroll-autoloads.el" . 243)
- ("/Users/kirinuki/.emacs.d/elpa/powerline-20140516.2128/powerline-autoloads.el" . 4197)
- ("/Users/kirinuki/.emacs.d/elpa/anzu-20141005.1955/anzu-autoloads.el" . 1428)
+(("/Users/kirinuki/Dropbox/kusumotoken/MasterThesis/report.tex" . 16253)
+ ("/Users/kirinuki/.emacs.d/recentf" . 2550)
+ ("/Users/kirinuki/Dropbox/kusumotoken/Conference/SES2014/report.tex" . 8563)
+ ("/Users/kirinuki/Dropbox/kusumotoken/"
+  (dired-filename . "/Users/kirinuki/Dropbox/kusumotoken/Conference"))
+ ("/Users/kirinuki/Dropbox/kusumotoken/Conference/"
+  (dired-filename . "/Users/kirinuki/Dropbox/kusumotoken/Conference/SES2014"))
+ ("/Users/kirinuki/Dropbox/kusumotoken/Conference/SES2014/"
+  (dired-filename . "/Users/kirinuki/Dropbox/kusumotoken/Conference/SES2014/report.tex"))
+ ("/Users/kirinuki/Dropbox/kusumotoken/MasterThesis/document.tex" . 2225)
+ ("/Users/kirinuki/Dropbox/kusumotoken/MasterThesis/"
+  (dired-filename . "/Users/kirinuki/Dropbox/kusumotoken/MasterThesis/document.tex"))
+ ("/Users/kirinuki/Dropbox/kusumotoken/abstruct.txt" . 185)
+ ("/Users/kirinuki/.emacs.d/init.el" . 7743)
+ ("/Users/kirinuki/Downloads/1-1.cas" . 1408)
+ ("/Users/kirinuki/maujan/houou_mjson/200902/2009020103gm-00a9-0000-2453a04c&tw=0.mjson" . 189248)
+ ("/Users/kirinuki/.zprezto/runcoms/zshrc" . 1280)
+ ("/Users/kirinuki/Dropbox/"
+  (dired-filename . "/Users/kirinuki/Dropbox/kusumotoken"))
+ ("/Users/kirinuki/Dropbox/kusumotoken/notification.txt" . 1243)
+ ("/Users/kirinuki/maujan/houou_mjson/200902/2009022319gm-00a9-0000-583d6566&tw=0.mjson" . 3272)
+ ("/Users/kirinuki/maujan/gethaihu.py" . 831)
+ ("/Users/kirinuki/.emacs.d/elpa/fringe-helper-20140620.1409/fringe-helper-autoloads.el" . 387)
+ ("/Users/kirinuki/.emacs.d/elpa/powerline-20140516.2128/powerline-autoloads.el" . 4076)
+ ("/Users/kirinuki/.emacs.d/elpa/undo-tree-20140509.522/undo-tree.el" . 3079)
+ ("/Users/kirinuki/.emacs.d/elpa/undo-tree-20140509.522/"
+  (dired-filename . "/Users/kirinuki/.emacs.d/elpa/undo-tree-20140509.522/undo-tree.el"))
  ("/Users/kirinuki/.emacs.d/elpa/undo-tree-20140509.522/undo-tree-autoloads.el" . 1632)
- ("/Users/kirinuki/Dropbox/楠本研/会議/SANER2015/saner2015.tex" . 938)
+ ("/Users/kirinuki/.emacs.d/url/cookies" . 389)
+ ("/Users/kirinuki/.emacs.d/elpa/popwin-20140902.1727/popwin-autoloads.el" . 2304)
+ ("/Users/kirinuki/.emacs.d/elpa/google-translate-20141006.1505/google-translate-autoloads.el" . 3794)
+ ("/Users/kirinuki/.emacs.d/elpa/smooth-scroll-20130321.2114/smooth-scroll-autoloads.el" . 243)
+ ("/Users/kirinuki/.emacs.d/elpa/anzu-20141005.1955/anzu-autoloads.el" . 1428)
  ("/Users/kirinuki/.emacs.d/.git/"
   (dired-filename . "/Users/kirinuki/.emacs.d/.git/config"))
  ("/Users/kirinuki/.emacs.d/elpa/git-gutter-fringe+-20140729.403/git-gutter-fringe+-autoloads.el" . 253)
  ("/Users/kirinuki/.emacs.d/elpa/git-gutter+-20141002.1112/git-gutter+-autoloads.el" . 1270)
  ("/Users/kirinuki/.emacs.d/elpa/git-commit-mode-20141014.1634/git-commit-mode-autoloads.el" . 760)
- ("/Users/kirinuki/.emacs.d/elpa/fringe-helper-20140620.1409/fringe-helper-autoloads.el" . 242)
- ("/Users/kirinuki/Dropbox/"
-  (dired-filename . "/Users/kirinuki/Dropbox/楠本研"))
  ("/Users/kirinuki/Dropbox/楠本研/"
   (dired-filename . "/Users/kirinuki/Dropbox/楠本研/会議"))
- ("/Users/kirinuki/Dropbox/楠本研/会議/"
-  (dired-filename . "/Users/kirinuki/Dropbox/楠本研/会議/SANER2015"))
- ("/Users/kirinuki/Dropbox/楠本研/会議/SANER2015/"
-  (dired-filename . "/Users/kirinuki/Dropbox/楠本研/会議/SANER2015/saner2015.tex"))
- ("/Users/kirinuki/.zprezto/runcoms/zshrc" . 1200)
  ("/Users/kirinuki/.emacs.d/elisp/tabbar.el" . 16931)
  ("/Users/kirinuki/.emacs.d/elisp/redo+.el" . 11955)
  ("/Users/kirinuki/.emacs.d/elisp/recentf-ext.el" . 1223))

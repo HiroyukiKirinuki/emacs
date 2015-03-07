@@ -1,0 +1,8 @@
+ls
+git init
+add .
+git add .
+git status
+git commit
+git commit -m "first commit"
+git status
